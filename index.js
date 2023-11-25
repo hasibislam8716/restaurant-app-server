@@ -11,6 +11,7 @@ const port = process.env.PORT || 5000
 app.use(cors())
 app.use(express.json())
 
+
 // create a jwt verify function
 const verifyJWT = (req, res, next) => {
     const authorization = req.headers.authorization;
@@ -45,6 +46,7 @@ async function run() {
     try {
         // Connect the client to the server	(optional starting in v4.7)
         await client.connect();
+
 
 
         const userCollection = client.db('bistroDB').collection('users')
@@ -267,6 +269,7 @@ async function run() {
             const result = await paymentCollection.aggregate(pipeline).toArray()
             res.send(result)
         })
+
 
         // Send a ping to confirm a successful connection
         await client.db("admin").command({ ping: 1 });
